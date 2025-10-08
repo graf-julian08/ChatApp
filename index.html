@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Chat - Random Chat</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen active">
+    <div class="container">
+      <h1>SimpleChatConnect</h1>
+      <p class="subtitle">Connect with random people worldwide</p>
+      
+      <div class="form-section">
+        <h3>Your Information (optional)</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="user-age">Your Age</label>
+            <select id="user-age">
+              <option value="">Not specified</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="user-gender">Your Gender</label>
+            <select id="user-gender">
+              <option value="">Not specified</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="user-country">Your Country</label>
+            <select id="user-country">
+              <option value="">Not specified</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <h3>Looking for? (optional)</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pref-age">Preferred Age</label>
+            <select id="pref-age">
+              <option value="">Any</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="pref-gender">Preferred Gender</label>
+            <select id="pref-gender">
+              <option value="">Any</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="pref-country">Preferred Country</label>
+            <select id="pref-country">
+              <option value="">Any</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section mode-section">
+        <h3>Select Mode</h3>
+        <div class="mode-selection">
+          <label class="mode-option">
+            <input type="radio" name="chat-mode" value="text" checked>
+            <span>Text</span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="chat-mode" value="video">
+            <span>Video</span>
+          </label>
+        </div>
+      </div>
+      
+      <button id="connect-btn" class="btn btn-connect">Start</button>
+    </div>
+  </div>
+  
+  <!-- Chat Screen -->
+  <div id="chat-screen" class="screen">
+    <div class="chat-container">
+      
+      <!-- Header with Partner Info -->
+      <div class="chat-header">
+        <div class="partner-info">
+          <span class="label">Partner profile:</span>
+          <span id="partner-summary" class="partner-summary">Unknown</span>
+        </div>
+      </div>
+      
+      <!-- Text Chat Content -->
+      <div id="text-chat-content" class="chat-content">
+        <div id="messages" class="messages">
+          <div id="typing-indicator" class="typing-indicator">User is typing</div>
+        </div>
+        <div class="input-area" id="input-area">
+          <input type="text" id="message-input" placeholder="Type a message..." />
+          <button id="send-btn" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+      
+      <!-- Video Chat Content -->
+      <div id="video-chat-content" class="chat-content">
+        <div class="video-container" id="video-container">
+          <video id="remote-video" autoplay playsinline></video>
+          <video id="local-video" autoplay playsinline muted></video>
+        </div>
+        <div class="video-status" id="video-status">Initializing video chat...</div>
+      </div>
+      
+      <!-- Bottom Actions -->
+      <div class="bottom-actions">
+        <button id="next-btn" class="btn btn-secondary">Next</button>
+        <button id="disconnect-btn" class="btn btn-danger">Disconnect</button>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Waiting Screen -->
+  <div id="waiting-screen" class="screen">
+    <div class="container">
+      <div class="spinner"></div>
+      <h2>Looking for a chat partner...</h2>
+      <p id="waiting-message">Please wait a moment</p>
+      <button id="cancel-wait-btn" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+  
+  <!-- Socket.io Client -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Hauptskript -->
+  <script src="script.js"></script>
+</body>
+</html>
+
